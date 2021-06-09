@@ -8,7 +8,7 @@ import { ApiService } from './api.service';
 })
 export class LoginService {
 
-  url: string = "APIurl";
+  url: string = "https://localhost:5001/api/User";
 
   constructor(private api: ApiService) { }
 
