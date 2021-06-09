@@ -45,6 +45,15 @@ namespace EventSpikeBack.Api
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy("myPolicy", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
+            
         }
 
 
@@ -62,6 +71,8 @@ namespace EventSpikeBack.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseCors("myPolicy");
 
             app.UseAuthorization();
 
