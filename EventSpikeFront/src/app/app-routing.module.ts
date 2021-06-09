@@ -4,15 +4,15 @@ import { LayoutComponent } from './core/layout/layout.component';
 
 const routes: Routes = [
   {path: '', component: LayoutComponent, children: [
-    { path: '', redirectTo: 'login', pathMatch: 'full'},
     {
-      path: '',
+      path: 'home',
       loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)
     },
     {
       path: 'login',
       loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule)
-    }
+    },
+    { path: '', redirectTo: 'home', pathMatch: 'full'}
   ]}
 ];
 
