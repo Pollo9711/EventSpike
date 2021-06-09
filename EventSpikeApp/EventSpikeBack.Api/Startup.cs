@@ -11,6 +11,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EventSpikeBack.Context;
+using EventSpikeBack.Interfaces.Repositories;
+using EventSpikeBack.Interfaces.Services;
+using EventSpikeBack.Mapping;
+using EventSpikeBack.Repositories;
+using EventSpikeBack.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventSpikeBack.Api
 {
@@ -32,7 +39,15 @@ namespace EventSpikeBack.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EventSpikeBack.Api", Version = "v1" });
             });
+
+            services.AddDbContext<EventSpikeBackDbContext>(opt => opt.UseSqlServer(Configuration.GetValue<string>("ConnectionStrings:EventSpikeBackDbConnectionString")));
+
+            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

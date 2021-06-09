@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>53f60338-1dd6-48e5-9563-6fa5f1a9b9cc</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,10 +22,6 @@
     <ProjectReference Include="..\EventSpikeBack.Mapping\EventSpikeBack.Mapper.csproj" />
     <ProjectReference Include="..\EventSpikeBack.Repositories\EventSpikeBack.Repositories.csproj" />
     <ProjectReference Include="..\EventSpikeBack.Services\EventSpikeBack.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
