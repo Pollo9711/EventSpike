@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventSpikeBack.Domain\EventSpikeBack.Domain.csproj" />
+    <ProjectReference Include="..\EventSpikeBack.Interfaces\EventSpikeBack.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
