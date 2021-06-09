@@ -29,25 +29,29 @@ namespace EventSpikeBack.Repositories
 
         public void Delete(int id)
         {
-            var idEntity = _context.User.FirstOrDefault( u =>u.Id == id);
-            _context.User.Remove(idEntity);
+            var userId = _context.User.FirstOrDefault( u =>u.Id == id);
+            _context.User.Remove(userId);
             _context.SaveChanges();
 
         }
 
         public UserDomain Get(int id)
         {
-            
+            var userEntity = _context.User.FirstOrDefault(u => u.Id == id);
+            return _mapper.Map<UserDomain>(userEntity);
         }
 
         public List<UserDomain> GetAll()
         {
-            
+            var user = _context.User;
+            return _mapper.ProjectTo<UserDomain>(user).ToList();
         }
 
         public void Update(UserDomain user)
         {
-            
+            var userEntity = _mapper.Map<UserEntity>(user);
+            _context.User.Update(userEntity);
+            _context.SaveChanges();
         }
     }
 }
